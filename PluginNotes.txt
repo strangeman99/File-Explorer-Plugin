@@ -1,0 +1,12 @@
+Custom ChatGPT Plugin
+
+IDEA
+-My first try with this is going to be letting chatgpt access a user's windows file system
+-Using python and flask for easy development
+-Mainly following this walkthrough https://lablab.ai/t/chatgpt-plugin-tutorial-how-to-create-chatgpt-plugin
+
+FUNCTIONS
+-Search for a file. Returning a directory that gpt can access
+-Reading a file
+-Writing to a file
+
