@@ -8,19 +8,26 @@ def findFile():
 	# Handling request
 	data = request.json
 	fileName = data.get('name')
-	dirInfo = data.get('dirInfo', 'C:\\')
+	dirInfo = data.get('dirInfo')
+
+	# Defult directory
+	if not dirInfo:
+		dirInfo = 'C:\\'
 
 	result = []
-	allowedTypes = ('.txt')
+	allowedTypes = (['.txt'])
 
-	# Walking top-down from the root
-	for root, dir, files in os.walk(dirInfo):
-		# Only searching for files of the allowed type
-		files = [file for file in files if not file.endswith(allowedTypes)]
-		if fileName in files:
-			result.append(os.path.join(root, fileName))
+	# Searching all allowed types
+	for curType in allowedTypes:
+		name = fileName+curType
+
+		# Walking top-down from the root
+		for root, dir, files in os.walk(dirInfo):
+			if name in files:
+				result.append(os.path.join(root, name))
+				break
 
 	return jsonify(result)
 
 # To run the app locally
-app.run(debug=True, host='127.0.0.1', port=6969)
+app.run(debug=True, host='127.0.0.1', port=8085)
