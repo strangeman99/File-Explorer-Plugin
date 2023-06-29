@@ -1,0 +1,17 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "File Explorer",
+    "name_for_model": "explorer",
+    "description_for_human": "Access your file system. You can search, write, and read your files from File Explorer.",
+    "description_for_model": "Access the user's file system. You can search, write, and read files from their File Explorer.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "http://127.0.0.1:8085/openapi.yaml"
+    },
+    "logo_url": "http://127.0.0.1:8085/logo.png",
+    "contact_email": "",
+    "legal_info_url": ""
+}

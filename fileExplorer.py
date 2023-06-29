@@ -29,5 +29,11 @@ def findFile():
 
 	return jsonify(result)
 
+# Define the API endpoint for the plugin logo
+@app.route('/logo.png', methods=['GET'])
+def plugin_logo():
+    filename = 'logo.png'
+    return send_file(filename, mimetype='image/png')
+
 # To run the app locally
 app.run(debug=True, host='127.0.0.1', port=8085)
