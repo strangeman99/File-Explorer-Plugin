@@ -1,0 +1,47 @@
+openapi: 3.0.1
+info:
+  title: File Finder and Image Serving Plugin
+  description: A plugin that finds files and serves images.
+  version: "v1"
+servers:
+  - url: http://127.0.0.1:8085  # URL to the Flask app
+paths:
+  /find-file:
+    post:
+      operationId: findFile
+      summary: Find a file
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/findFileRequest"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/findFileResponse"
+
+components:
+  schemas:
+    findFileRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The name of the file to find.
+        dirInfo:
+          type: string
+          description: The directory to start the search from.
+    findFileResponse:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            type: string
+          description: The paths of the found files.

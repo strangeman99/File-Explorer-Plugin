@@ -35,5 +35,21 @@ def plugin_logo():
     filename = 'logo.png'
     return send_file(filename, mimetype='image/png')
 
+# Define the API endpoint for the plugin manifest
+@app.route('/ai-plugin.json', methods=['GET'])
+def plugin_manifest():
+    host = request.headers['Host']
+    with open('./ai-plugin.json') as f:
+        text = f.read()
+        return Response(text, mimetype='text/json')
+
+# Define the API endpoint for the OpenAPI specification
+@app.route('/openapi.yaml', methods=['GET'])
+def openapi_spec():
+    host = request.headers['Host']
+    with open('./openapi.yaml') as f:
+        text = f.read()
+        return Response(text, mimetype='text/yaml')
+
 # To run the app locally
-app.run(debug=True, host='127.0.0.1', port=8085)
+app.run(debug=False, host='127.0.0.1', port=8085)
